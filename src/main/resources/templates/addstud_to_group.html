@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous">
+</head>
+<meta charset="UTF-8">
+<title>Add new Offer</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/students/{id}(id = ${company.id})}">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/groups/{id}(id = ${company.id})}">Groups</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/groups/students/{id_company}/{id_group}(id_company = ${company.id} , id_group = ${group.id})}">Group's Students</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <h1>Add new Student</h1>
+    <hr>
+    <h2>Save Group</h2>
+
+    <form action="#" th:action="@{/groups/saveStudents/{id_company}/{id_group}( id_company = ${company.id} , id_group = ${group.id})}" th:object="${grupaNoua}"  method="post">
+        <uL>
+            <li th:each="student : ${students}">
+                <div class="ui checkbox">
+                    <input type="checkbox" th:field="*{studentsList}" th:value="${student.id}">
+                    <label th:text="${student.name}"></label>
+                </div>
+            </li>
+        </uL>
+
+
+        <button type="submit" class="btn btn-info col-2">Save Group</button>
+    </form>
+
+</div>
+
+</body>
+</html>
